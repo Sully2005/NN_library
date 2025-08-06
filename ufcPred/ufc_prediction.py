@@ -46,7 +46,7 @@ print("Accuracy: ", accuracy)
 #Not an amazing accuracy especially considering the fact that if the model were to pick red to win everytime
 #it would be correct about 58 percent of the time. This can be improved upon using XGboost and more training examples.
 #Another thing that should be noticed is that it is difficult to use neural networks to predict UFC fights as it is hard 
-#to capture the quality of opponent of every fighter and how theri styles interact. 
+#to capture the quality of opponent of every fighter and how their styles interact. 
 
 # Iteration: 0,   Error: 0.2777115653253852
 # Iteration: 100,   Error: 0.20766497808897819
