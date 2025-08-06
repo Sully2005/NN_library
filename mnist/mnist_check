@@ -1,0 +1,53 @@
+from main import *
+
+#Only using the training data to split as the dataset is too large to run on my computer
+data = pd.read_csv('mnist_train.csv')
+
+data = np.array(data)
+
+data_train = data[:5000]
+
+
+
+Y = data_train[:,0] 
+X = data_train[:,1:] / 255
+X_train, Y_train, X_test, Y_test = split_training_data(X, Y, 0.2)
+
+
+
+one_hot_encoded_Y = one_hot_encoding(Y_train)
+one_hot_encoded_ytest = one_hot_encoding(Y_test)
+
+
+network = [
+     Dense(784, 1000), 
+     Relu(),
+     Dense(1000, 10),
+     Softmax()
+ ]
+
+train(network, X_train, one_hot_encoded_Y, cross_entropy, cross_entropy_derivative, 0.05)
+
+
+accuracy = get_Accuracy(X_test, one_hot_encoded_ytest, network)
+
+print("Accuracy: ", accuracy)
+
+# Here is the output to the code. As you can see the network handled the testing data quite well
+
+# Iteration: 0,   Error: 2.341666043931742
+# Iteration: 100,   Error: 0.39743133335109676
+# Iteration: 200,   Error: 0.24357783105125688
+# Iteration: 300,   Error: 0.1743700195095516
+# Iteration: 400,   Error: 0.13236743080741387
+# Iteration: 500,   Error: 0.10404558924874448
+# Iteration: 600,   Error: 0.08403300065325697
+# Iteration: 700,   Error: 0.06941086753458726
+# Iteration: 800,   Error: 0.05845200422147723
+# Iteration: 900,   Error: 0.05005792485257309
+# Iteration: 1000,   Error: 0.04349309387606945
+# Iteration: 1100,   Error: 0.03825822503825112
+# Iteration: 1200,   Error: 0.034014891656601404
+# Iteration: 1300,   Error: 0.030523693943467947
+# Iteration: 1400,   Error: 0.027609217011857028
+# Accuracy:  89.075
