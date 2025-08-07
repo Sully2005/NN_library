@@ -26,8 +26,11 @@ Y_train = np.array([[0], [0], [1], [1]])
 
 network = [
     Dense(2,4), 
+    
     Tanh(), 
+    
     Dense(4,1),
+    
     Sigmoid()
 ]
 
@@ -35,10 +38,13 @@ train(network, X_train, Y_train, mean_squared_error, mean_squared_error_derivati
 
         
 X_test = np.array([[1,0], [0,1], [1,1], [0,0]])
-#Y_test = np.array([[1], [0], [1], [0]])
+
+Y_test = np.array([[1], [0], [1], [0]])
 
 accuracy = get_Accuracy(X_test, Y_test, network)
+
 print(accuracy)
+
 
 
 
