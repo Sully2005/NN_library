@@ -21,9 +21,25 @@ A Keras-styel neural netwrok library built from scracth in python. Desgined fotr
 
 Here is a quick example of how to build and train a simple neural network:
 
-network = [
+X_train = np.array([[0,0], [0,1],[1,0], [1,1]])
+Y_train = np.array([[0], [0], [1], [1]])
 
+network = [
+    Dense(2,4), 
+    Tanh(), 
+    Dense(4,1),
+    Sigmoid()
 ]
+
+train(network, X_train, Y_train, mean_squared_error, mean_squared_error_derivative, 0.01)
+
+        
+X_test = np.array([[1,0], [0,1], [1,1], [0,0]])
+#Y_test = np.array([[1], [0], [1], [0]])
+
+accuracy = get_Accuracy(X_test, Y_test, network)
+print(accuracy)
+
 
 
 
